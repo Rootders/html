@@ -17,7 +17,7 @@
 		<img class="logo" src="logo-contrast.svg">
 		<a class = "profile" href="#">
       <span><svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.13 11.164a1.465 1.465 0 0 0-.267 0 3.57 3.57 0 0 1-3.449-3.578C8.414 5.607 10.014 4 12 4a3.583 3.583 0 0 1 .13 7.164ZM7.958 14.144c-1.954 1.308-1.954 3.44 0 4.74 2.221 1.487 5.864 1.487 8.085 0 1.954-1.308 1.954-3.44 0-4.74-2.213-1.478-5.856-1.478-8.085 0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-      <span class= "text"><?= htmlspecialchars($_SESSION['user']['name']) ?></span>
+      <span id="auth-button" class= "text"><?= htmlspecialchars($_SESSION['user']['name']) ?></span>
     </a>
 	</div>
 	<div class="page">
