@@ -37,7 +37,7 @@
 	</div>
 	<main>
 	<div id="login-modal">
-    <form action="<?login()?>" method="POST">
+    <form action="script/login.php" method="POST">
         <input type="text" name="login" placeholder="Имя пользователя" required>
         <input type="password" name="password" placeholder="Пароль" required>
         <input type="submit" value="Войти">
