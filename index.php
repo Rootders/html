@@ -1,6 +1,6 @@
 <?php
-	include "scripts/login.php";
-	include "scripts/connection";
+	include "script/login.php";
+	include "script/connection.php";
 	connection();
 ?>
 
