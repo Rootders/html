@@ -42,7 +42,7 @@
         <input type="text" name="login" placeholder="Имя пользователя" required>
         <input type="password" name="password" placeholder="Пароль" required>
         <input type="submit" value="Войти">
-        <button type="button" id="close-modal">Закрыть</button>
+        <button type="button" onclick="<?login()?>" id="close-modal">Закрыть</button>
     </form>
 </div>
 
