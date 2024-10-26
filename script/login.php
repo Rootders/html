@@ -1,10 +1,6 @@
 <?php
-
-include "script/connection.php";
-
-
 function login(){
-    
+
 connection();
 $login = $_POST['login'];
 $password = $_POST['password'];
