@@ -1,7 +1,7 @@
 <?php
 	include "script/connection.php";
         session_start();
-	connection();
+		connection();
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,6 @@
         <input type="submit" value="Войти">
         <button type="button"  id="close-modal">Закрыть</button>
     </form>
-</div>
 </div>
 
 <script>

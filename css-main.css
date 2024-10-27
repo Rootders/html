@@ -111,8 +111,8 @@ border: 0;
 	right: 20px;
 }
 #auth-button, #close-modal {
-	background-color: #28a745;
-	color: white;
+	background-color: white;
+	color: black;
 	border: none;
 	padding: 10px 15px;
 	cursor: pointer;
