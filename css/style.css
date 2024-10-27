@@ -157,6 +157,7 @@ input.search {
 }
 
 main {
+    padding:1 rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create responsive columns */
     gap: 20px; /* Spacing between cards */
