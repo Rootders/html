@@ -2,7 +2,6 @@ body {
     max-width: 1500px;
     margin: 0 auto;
     min-height: 900px;
-    background-color: grey;
 }
 
 .header {
@@ -21,7 +20,7 @@ body {
 main {
     padding: 1rem;
     background-color: grey;
-    height: 100%;
+    min-height: 500px;
 }
 
 .page {
