@@ -36,18 +36,26 @@
 	</div>
 	<main>
 	<div id="login-modal">
-    <form >
-        <input type="text" name="login" placeholder="Имя пользователя" required>
-        <input type="password" name="password" placeholder="Пароль" required>
-        <input type="submit" onclick="<?login(method="POST")?>" value="Войти">
+	<form  method="POST">
+        <input type="text" name="login" placeholder="Имя пользователя" id ="log" required>
+        <input type="password" name="password" placeholder="Пароль" id = "pass" required>
+        <input type="submit" id ="go" value="Войти">
         <button type="button"  id="close-modal">Закрыть</button>
     </form>
 </div>
+</div>
 
 <script>
+	const logButton = document.getElementById('log');
+	const passButton = document.getElementById('pass');
+	const goButton = document.getElementById('go');
     const authButton = document.getElementById('auth-button');
     const loginModal = document.getElementById('login-modal');
     const closeModal = document.getElementById('close-modal');
+
+	goButton.addEventListener('click', () => {
+        <?login(passButton.value, logButton.value)?>
+    });
 
     authButton.addEventListener('click', () => {
         loginModal.style.display = 'block';
