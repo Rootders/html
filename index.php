@@ -63,7 +63,7 @@
     });
 
 	goButton.addEventListener('click', () => {
-        <?login(passButton.value, logButton.value);?>
+        login(passButton.value, logButton.value);
     });
 
 	
