@@ -46,8 +46,6 @@
 </div>
 
 <script>
-	
-	
     const authButton = document.getElementById('auth-button');
     const loginModal = document.getElementById('login-modal');
     const closeModal = document.getElementById('close-modal');
@@ -60,6 +58,11 @@
         loginModal.style.display = 'none';
     });
 
+	const goButton = document.getElementById('go');
+	const logButton = document.getElementById('log');
+	const passButton = document.getElementById('pass');
+
+	
 </script>
 	</main>	
 </body>
