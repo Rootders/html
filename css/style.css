@@ -228,14 +228,21 @@ main {
 }
 
 .modal-content form input[type="text"],
-form input[type="password"], 
-form input[type="submit"] {
-    width: 50%;
+form input[type="password"]{
+    width: 90%;
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+.modal-conten form input[type="submit"]{
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+} 
 
 :active, :hover, :focus {
     outline: 0;
