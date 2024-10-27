@@ -156,7 +156,6 @@ input.search {
     border-radius: 5px;
 }
 
-/* Grid for product cards */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create responsive columns */
@@ -243,6 +242,17 @@ input.search {
 .tab a.active {
     font-weight: bold;
     border-bottom: 2px solid #007bff;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 :active, :hover, :focus {
