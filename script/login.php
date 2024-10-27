@@ -1,9 +1,10 @@
 <?php
 $login = $_POST['login'];
 $password = $_POST['password'];
+$link = connection();
 
 $check_user = "SELECT * FROM users WHERE `login` = '$login' AND `password` = '$password'";
-$result = mysqli_query(connection(), $check_user);
+$result = mysqli_query($link, $check_user);
 
 if (mysqli_num_rows($result)>0){
     $user = mysqli_fetch_assoc($result);
