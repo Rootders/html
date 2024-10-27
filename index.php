@@ -46,16 +46,11 @@
 </div>
 
 <script>
-	const logButton = document.getElementById('log');
-	const passButton = document.getElementById('pass');
-	const goButton = document.getElementById('go');
+	
+	
     const authButton = document.getElementById('auth-button');
     const loginModal = document.getElementById('login-modal');
     const closeModal = document.getElementById('close-modal');
-
-	goButton.addEventListener('click', () => {
-        <?login(passButton.value, logButton.value)?>
-    });
 
     authButton.addEventListener('click', () => {
         loginModal.style.display = 'block';
@@ -63,6 +58,14 @@
 
     closeModal.addEventListener('click', () => {
         loginModal.style.display = 'none';
+    });
+
+	const goButton = document.getElementById('go');
+	const logButton = document.getElementById('log');
+	const passButton = document.getElementById('pass');
+
+	goButton.addEventListener('click', () => {
+        <?login(passButton.value, logButton.value)?>
     });
 
 </script>
