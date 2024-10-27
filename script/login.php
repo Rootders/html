@@ -18,7 +18,7 @@ if (mysqli_num_rows($result)>0){
         "trackable_goods" => $user['trackable_goods']
     ];
 
-    header('Location: index.php');
+    header('Location: ../index.php');
 
 } else {
     echo "Неверные учетные данные.";
