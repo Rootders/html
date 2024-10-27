@@ -1,7 +1,17 @@
 <?php
 function login($login, $password){
+    session_start();
+    $host = 'localhost';
+    $user = 'phpmyadmin';
+    $pass = 'toor';
     
-connection();
+    $link = mysqli_connect($host, $user, $pass);
+    
+    mysqli_select_db($link, 'phpmyadmin');
+    
+    if(!$link){
+        die('Error connect to DataBase');
+    }
 
 $check_user = "SELECT * FROM users WHERE `login` = '$login' AND `password` = '$password'";
 $result = mysqli_query($link, $check_user);
