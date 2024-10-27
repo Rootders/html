@@ -1,16 +1,22 @@
 <?php
-function connection(){
-session_start();
-$host = 'localhost';
-$user = 'phpmyadmin';
-$pass = 'toor';
+function connection() {
+    // Подключение к базе данных
+    $servername = "localhost"; // Сервер базы данных
+    $username = "phpmyadmin"; // Имя пользователя
+    $password = "toor"; // Пароль
+    $dbname = "hackathon"; // Название базы данных
 
-$link = mysqli_connect($host, $user, $pass);
+    // Создаем соединение
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-mysqli_select_db($link, 'phpmyadmin');
+    // Проверяем соединение
+    if ($conn->connect_error) {
+        die("Ошибка подключения: " . $conn->connect_error);
+    }
 
-if(!$link){
-    die('Error connect to DataBase');
-}
+    // Устанавливаем кодировку для корректного отображения данных
+    $conn->set_charset("utf8");
+
+    return $conn;
 }
 ?>

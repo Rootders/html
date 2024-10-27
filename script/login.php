@@ -1,38 +1,37 @@
 <?php
 session_start();
-$host = 'localhost';
-$user = 'phpmyadmin';
-$pass = 'toor';
+include "connection.php";
 
-$link = mysqli_connect($host, $user, $pass);
+$conn = connection();
 
-mysqli_select_db($link, 'phpmyadmin');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login = $_POST['login'];
+    $password = $_POST['password'];
 
-if(!$link){
-    die('Error connect to DataBase');
+    // Поиск пользователя
+    $sql = "SELECT * FROM users WHERE login = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+
+        // Проверка пароля (предполагается, что пароль хэширован)
+        if (password_verify($password, $user['password'])) {
+            // Успешный вход
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'name' => $user['login']
+            ];
+            header("Location: ../index.php");
+            exit();
+        } else {
+            echo "Неверный пароль!";
+        }
+    } else {
+        echo "Пользователь не найден!";
+    }
 }
-
-$login = $_POST['login'];
-$password = $_POST['password'];
-
-$check_user = "SELECT * FROM users WHERE `login` = '$login' AND `password` = '$password'";
-$result = mysqli_query($link, $check_user);
-
-if (mysqli_num_rows($result)>0){
-    $user = mysqli_fetch_assoc($result);
-
-    $_SESSION['user'] = [
-        "id" => $user['id'],
-        "name" => $user['name'],
-        "login" => $user['login'],
-        "trackable_goods" => $user['trackable_goods']
-    ];
-
-    header('Location: ../index.php');
-
-} else {
-    echo "Неверные учетные данные.";
-}
-
-
 ?>
