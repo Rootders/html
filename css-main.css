@@ -41,6 +41,7 @@ main{
 }
 
 .profile svg{
+	display: flex;
 	width: 2rem;
 }
 
@@ -119,7 +120,7 @@ border: 0;
 	border-radius: 5px;
 }
 #auth-button:hover, #close-modal:hover {
-	background-color: #218838;
+	background-color: grey;
 }
 #login-modal {
 	display: none;
