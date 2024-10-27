@@ -1,5 +1,4 @@
 <?php
-	include "script/login.php";
 	include "script/connection.php";
 	connection();
 ?>
@@ -37,10 +36,10 @@
 	</div>
 	<main>
 	<div id="login-modal">
-	<form  method="POST">
-        <input type="text" name="login" placeholder="Имя пользователя" id ="log" required>
-        <input type="password" name="password" placeholder="Пароль" id = "pass" required>
-        <button type="submit" id ="go">Войти</button>
+	<form action="script/login.php" method="POST">
+        <input type="text" name="login" placeholder="Имя пользователя" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <input type="submit" value="Войти">
         <button type="button"  id="close-modal">Закрыть</button>
     </form>
 </div>
@@ -50,9 +49,6 @@
     const authButton = document.getElementById('auth-button');
     const loginModal = document.getElementById('login-modal');
     const closeModal = document.getElementById('close-modal');
-	const goButton = document.getElementById('go');
-	const logButton = document.getElementById('log');
-	const passButton = document.getElementById('pass');
 
     authButton.addEventListener('click', () => {
         loginModal.style.display = 'block';
@@ -61,14 +57,6 @@
     closeModal.addEventListener('click', () => {
         loginModal.style.display = 'none';
     });
-
-	goButton.addEventListener('click', () => {
-        login(passButton.value, logButton.value);
-    });
-
-	
-
-	
 </script>
 	</main>	
 </body>

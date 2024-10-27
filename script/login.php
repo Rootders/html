@@ -1,7 +1,9 @@
 <?php
-function login($login,$password ){
-    
+include "script/connection.php";
 connection();
+
+$login = $_POST['login'];
+$password = $_POST['password'];
 
 $check_user = "SELECT * FROM users WHERE `login` = '$login' AND `password` = '$password'";
 $result = mysqli_query($link, $check_user);
@@ -16,9 +18,11 @@ if (mysqli_num_rows($result)>0){
         "trackable_goods" => $user['trackable_goods']
     ];
 
+    header('Location: index.php');
+
 } else {
     echo "Неверные учетные данные.";
 }
 
-}
+
 ?>
