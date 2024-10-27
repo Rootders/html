@@ -12,5 +12,6 @@ mysqli_select_db($link, 'phpmyadmin');
 if(!$link){
     die('Error connect to DataBase');
 }
+return $link;
 }
 ?>
