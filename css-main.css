@@ -158,14 +158,24 @@ input.search {
 
 /* Добавленные стили для карточек товаров */
 
+/* Контейнер для карточек товаров с использованием CSS Grid */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Создаем колонки для карточек */
+    gap: 20px; /* Отступы между карточками */
+    padding: 20px;
+}
+
 .product-card {
     background-color: white;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-name {
@@ -191,6 +201,7 @@ input.search {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .add-product-button:hover {
