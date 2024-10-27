@@ -247,6 +247,7 @@ main {
 .modal-content form input[type="text"],
 form input[type="password"],
 form input[type="submit"] {
+    justify-content: center;
     display: flex;
     width: 90%;
     margin: 10px 0;
