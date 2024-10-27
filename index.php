@@ -15,7 +15,7 @@ $conn = connection();
 </head>
 <body>
     <div class="header">
-        <img class="logo" src="logo-contrast.svg" alt="Logo">
+        <img class="logo" src="logo-contrast1.svg" alt="Logo">
         <a class="profile" href="#" id="auth-button">
             <span>
                 <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
