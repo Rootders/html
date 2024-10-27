@@ -247,7 +247,7 @@ main {
 .modal-content form input[type="text"],
 form input[type="password"],
 form input[type="submit"] {
-    display: block;
+    display: flex;
     width: 90%;
     margin: 10px 0;
     padding: 10px;
