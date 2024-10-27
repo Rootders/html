@@ -1,76 +1,77 @@
-body{
-	max-width: 1500px;
-  	margin: 0 auto;
+body {
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
-.header{
-	background-color: grey;
-	padding:1rem;
-	display: grid;
-	grid-area: header;
-  	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "logo actions";
+.header {
+    background-color: grey;
+    padding: 1rem;
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "logo actions";
 }
 
-.logo{
-	grid-area: logo;
+.logo {
+    grid-area: logo;
 }
 
-main{
-	padding: 1rem;
-	background-color: grey;
+main {
+    padding: 1rem;
+    background-color: grey;
 }
 
-.page{
-	border: 3px solid grey;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+.page {
+    border: 3px solid grey;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.profile{
-	align-items: center;
-	padding:0.2rem;
-	font-size: 0.9rem;
-	text-decoration: none;
-	background-color: white;
-	color: black;
-	border-radius: 8px;
-	justify-self:end;
-	align-self:center;
-	display: inline-flex;
-	grid-area: actions;
+.profile {
+    align-items: center;
+    padding: 0.2rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    justify-self: end;
+    align-self: center;
+    display: inline-flex;
+    grid-area: actions;
 }
 
-.profile svg{
-	display: flex;
-	width: 2rem;
+.profile svg {
+    display: flex;
+    width: 2rem;
 }
 
-.profile .text{
-	align-self:center;
+.profile .text {
+    align-self: center;
 }
 
-.search_block{
-	padding: 1rem;
-	margin: 0 auto;
+.search_block {
+    padding: 1rem;
+    margin: 0 auto;
 }
 
-.search{
-	width: 90%;
-	height: 30px;
+.search {
+    width: 90%;
+    height: 30px;
 }
 
 .search_block form {
-display: flex;
-margin: 0 auto;
+    display: flex;
+    margin: 0 auto;
 }
+
 input.search {
-	padding-left: 1rem;
-	align-self:center;
-background-color: grey;
-border-top-left-radius: 6px;
-border-bottom-left-radius: 6px;
-border: 0;
+    padding-left: 1rem;
+    align-self: center;
+    background-color: grey;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border: 0;
 }
 
 :active, :hover, :focus {
@@ -79,73 +80,119 @@ border: 0;
 }
 
 .categories {
-	justify-content: center;
-  align-items: center;
-  align-self:center;
-}
-
-.categories svg{
-	display: flex;
-	padding-left: 2rem;
-	width: 1.3rem
-}
-
-.submit svg{
-	display: flex;
-	width: 1.3rem;
-}
-
-.submit{
-	justify-content: center;
+    justify-content: center;
     align-items: center;
-	display: flex;
-	align-self:center;
-	height: 30px;
-	border: 1px solid grey;
-	width: 5%;
-	border-top-right-radius: 6px;
-	border-bottom-right-radius: 6px;
+    align-self: center;
+}
+
+.categories svg {
+    display: flex;
+    padding-left: 2rem;
+    width: 1.3rem;
+}
+
+.submit svg {
+    display: flex;
+    width: 1.3rem;
+}
+
+.submit {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-self: center;
+    height: 30px;
+    border: 1px solid grey;
+    width: 5%;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 #auth-container {
-	position: absolute;
-	top: 10px;
-	right: 20px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
+
 #auth-button, #close-modal {
-	background-color: white;
-	color: black;
-	border: none;
-	padding: 10px 15px;
-	cursor: pointer;
-	border-radius: 5px;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
 #auth-button:hover, #close-modal:hover {
-	background-color: grey;
+    background-color: grey;
 }
+
 #login-modal {
-	display: none;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: white;
-	padding: 20px;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-	border-radius: 8px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
 }
+
 #login-modal input[type="text"], input[type="password"] {
-	width: calc(100% - 22px);
-	padding: 10px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
 #login-modal input[type="submit"] {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	padding: 10px 15px;
-	cursor: pointer;
-	border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Добавленные стили для карточек товаров */
+
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-date {
+    font-size: 14px;
+    color: #777;
+}
+
+.product-user {
+    font-size: 14px;
+    color: #555;
+}
+
+.add-product-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-product-button:hover {
+    background-color: #0056b3;
 }
