@@ -1,4 +1,5 @@
 <?php
+	include "script/login.php";
 	include "script/connection.php";
 	connection();
 ?>
@@ -62,7 +63,7 @@
     });
 
 	goButton.addEventListener('click', () => {
-        <?login(passButton.value, logButton.value)?>
+        <?login(passButton.value, logButton.value);?>
     });
 
 	
