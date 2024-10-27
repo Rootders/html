@@ -1,7 +1,16 @@
 <?php
 session_start();
-require_once('connection.php');
+$host = 'localhost';
+$user = 'phpmyadmin';
+$pass = 'toor';
 
+$link = mysqli_connect($host, $user, $pass);
+
+mysqli_select_db($link, 'phpmyadmin');
+
+if(!$link){
+    die('Error connect to DataBase');
+}
 $login = $_POST['login'];
 $password = $_POST['password'];
 
