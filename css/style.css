@@ -249,7 +249,7 @@ form input[type="password"],
 form input[type="submit"] {
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: inline-flex;
     align-self: center;
     width: 90%;
     margin: 10px 0;
