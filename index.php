@@ -1,5 +1,6 @@
 <?php
 	include "script/connection.php";
+        session_start();
 	connection();
 ?>
 
