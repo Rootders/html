@@ -157,11 +157,10 @@ input.search {
 }
 
 main {
-    padding:1 rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create responsive columns */
     gap: 20px; /* Spacing between cards */
-    padding: 20px 0; /* Padding for top and bottom */
+    padding: 1rem; /* Padding for top and bottom */
 }
 
 .product-card {
