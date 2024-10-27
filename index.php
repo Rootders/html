@@ -36,10 +36,10 @@
 	</div>
 	<main>
 	<div id="login-modal">
-    <form  method="POST">
+    <form >
         <input type="text" name="login" placeholder="Имя пользователя" required>
         <input type="password" name="password" placeholder="Пароль" required>
-        <input type="submit" onclick="<?login()?>" value="Войти">
+        <input type="submit" onclick="<?login(method="POST")?>" value="Войти">
         <button type="button"  id="close-modal">Закрыть</button>
     </form>
 </div>

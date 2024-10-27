@@ -17,7 +17,7 @@ if (mysqli_num_rows($result)>0){
         "login" => $user['login'],
         "trackable_goods" => $user['trackable_goods']
     ];
-
+    
 } else {
     echo "Неверные учетные данные.";
 }
