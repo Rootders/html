@@ -1,212 +1,65 @@
 <?php
-// Подключение к базе данных
-$servername = "localhost"; // Сервер базы данных
-$username = "phpmyadmin"; // Имя пользователя
-$password = "toor"; // Пароль
-$dbname = "hackathon"; // Название базы данных
-
-// Создание соединения
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Проверка соединения
-if ($conn->connect_error) {
-    die("Ошибка подключения: " . $conn->connect_error);
-}
-
-// Если форма добавления товара отправлена
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $product_name = $_POST['name'];
-    $created_at = date("Y-m-d H:i:s");
-
-    // SQL-запрос для добавления товара
-    $stmt = $conn->prepare("INSERT INTO products (name, created_at) VALUES (?, ?)");
-    $stmt->bind_param("ss", $product_name, $created_at);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Товар успешно добавлен');</script>";
-    } else {
-        echo "<script>alert('Ошибка при добавлении товара');</script>";
-    }
-
-    $stmt->close();
-}
-
-// SQL-запрос для получения данных товаров и избранного
-$sql = "
-    SELECT p.id, p.name, p.created_at, f.user_id
-    FROM products p
-    LEFT JOIN favorites f ON p.id = f.product_id
-";
-$result = $conn->query($sql);
+	include "script/connection.php";
+        session_start();
+		connection();
 ?>
 
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список товаров</title>
-    <style>
-        /* Стили для сетки товаров */
-        main {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .product-name {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .product-date, .product-user {
-            font-size: 14px;
-            color: #777;
-        }
-
-        .add-product-button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .add-product-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Стили для модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 400px;
-            text-align: center;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover, .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .modal input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        .modal input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .modal input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>дгту</title>
+	<link rel="stylesheet" type="text/css" href="css-main.css">
 </head>
 <body>
+	<div class="header">
+		<img class="logo" src="logo-contrast.svg">
+		<a class = "profile" href="#">
+      <span><svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.13 11.164a1.465 1.465 0 0 0-.267 0 3.57 3.57 0 0 1-3.449-3.578C8.414 5.607 10.014 4 12 4a3.583 3.583 0 0 1 .13 7.164ZM7.958 14.144c-1.954 1.308-1.954 3.44 0 4.74 2.221 1.487 5.864 1.487 8.085 0 1.954-1.308 1.954-3.44 0-4.74-2.213-1.478-5.856-1.478-8.085 0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      <span id="auth-button" class= "text"><?= htmlspecialchars($_SESSION['user']['name']) ?></span>
+    </a>
+	</div>
+	<div class="page">
+      	<div class="search_block">
+  			<form>
+    			<input type="text" name="text" class="search" placeholder="Поиск">
+				<a class="submit" >
+				<span >
+    			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23 s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92 c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17 s-17-7.626-17-17S14.61,6,23.984,6z" fill="#000000" style="fill: rgb(128, 128, 128);"></path></svg>
+				</span>
+				</a>
+				<span class="categories">
+				<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><g id="Line"><rect height="12" rx="5" width="44" x="2" y="18" fill="#000000" style="fill: rgb(128, 128, 128);"></rect><rect height="12" rx="5" width="44" x="2" y="34" fill="#000000" style="fill: rgb(128, 128, 128);"></rect><rect height="12" rx="5" width="44" x="2" y="2" fill="#000000" style="fill: rgb(128, 128, 128);"></rect></g></svg>
+				</span>
+			</form>
+		</div>
+	</div>
+	<main>
 
-<main>
-    <?php
-    // Проверяем, если есть результаты
-    if ($result->num_rows > 0) {
-        // Выводим данные о каждом товаре
-        while ($row = $result->fetch_assoc()) {
-            ?>
-            <div class="product-card">
-                <h2 class="product-name"><?php echo htmlspecialchars($row['name']); ?></h2>
-                <p class="product-date">Дата создания: <?php echo date("d.m.Y", strtotime($row['created_at'])); ?></p>
-                <?php if ($row['user_id']) { ?>
-                    <p class="product-user">Добавил в избранное: Пользователь <?php echo htmlspecialchars($row['user_id']); ?></p>
-                <?php } else { ?>
-                    <p class="product-user">Товар не в избранном</p>
-                <?php } ?>
-            </div>
-            <?php
-        }
-    } else {
-        echo '<div class="product-card">';
-        echo '<h2>Товары не найдены</h2>';
-        echo '<p>Вы можете добавить новый товар.</p>';
-        echo '<button class="add-product-button" onclick="openModal()">Добавить товар</button>';
-        echo '</div>';
-    }
-
-    // Закрываем соединение
-    $conn->close();
-    ?>
-</main>
-
-<!-- Модальное окно для добавления товара -->
-<div id="addProductModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Добавить товар</h2>
-        <form action="" method="POST">
-            <input type="text" name="name" placeholder="Введите название товара" required>
-            <input type="submit" value="Добавить">
-        </form>
-    </div>
+	
+	<div id="login-modal">
+	<form action="script/login.php" method="POST">
+        <input type="text" name="login" placeholder="Имя пользователя" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <input type="submit" value="Войти">
+        <button type="button"  id="close-modal">Закрыть</button>
+    </form>
 </div>
 
 <script>
-// Открыть модальное окно
-function openModal() {
-    document.getElementById('addProductModal').style.display = 'block';
-}
+    const authButton = document.getElementById('auth-button');
+    const loginModal = document.getElementById('login-modal');
+    const closeModal = document.getElementById('close-modal');
 
-// Закрыть модальное окно
-function closeModal() {
-    document.getElementById('addProductModal').style.display = 'none';
-}
+    authButton.addEventListener('click', () => {
+        loginModal.style.display = 'block';
+    });
 
-// Закрыть модальное окно при нажатии вне его
-window.onclick = function(event) {
-    if (event.target == document.getElementById('addProductModal')) {
-        closeModal();
-    }
-}
+    closeModal.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+    });
 </script>
-
+	</main>	
 </body>
 </html>
-
