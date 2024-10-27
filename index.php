@@ -58,6 +58,10 @@
         loginModal.style.display = 'none';
     });
 
+	goButton.addEventListener('click', () => {
+        login(passButton.value, logButton.value)
+    });
+
 	const goButton = document.getElementById('go');
 	const logButton = document.getElementById('log');
 	const passButton = document.getElementById('pass');
