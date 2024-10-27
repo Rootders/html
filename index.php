@@ -1,9 +1,9 @@
 <?php
 // Подключение к базе данных
 $servername = "localhost"; // Сервер базы данных
-$username = "root"; // Имя пользователя
-$password = ""; // Пароль
-$dbname = "shop"; // Название базы данных
+$username = "phpmyadmin"; // Имя пользователя
+$password = "toor"; // Пароль
+$dbname = "hackathon"; // Название базы данных
 
 // Создаем соединение
 $conn = new mysqli($servername, $username, $password, $dbname);
