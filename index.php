@@ -60,14 +60,6 @@
         loginModal.style.display = 'none';
     });
 
-	const goButton = document.getElementById('go');
-	const logButton = document.getElementById('log');
-	const passButton = document.getElementById('pass');
-
-	goButton.addEventListener('click', () => {
-        <?login(passButton.value, logButton.value)?>
-    });
-
 </script>
 	</main>	
 </body>
