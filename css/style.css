@@ -139,23 +139,6 @@ input.search {
     border-radius: 8px;
 }
 
-#login-modal input[type="text"], input[type="password"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#login-modal input[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
 main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create responsive columns */
@@ -245,18 +228,15 @@ main {
 }
 
 .modal-content form input[type="text"],
-form input[type="password"],
-form input[type="submit"] {
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    align-self: center;
-    width: 90%;
+form input[type="password"] {
+    width: 50%;
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+form input[type="submit"]
 
 :active, :hover, :focus {
     outline: 0;
