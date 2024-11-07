@@ -21,17 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
             foreach ($distribution as $char => $percent) {
                 $display_char = htmlspecialchars($char); // преобразуем специальные символы для отображения
                 echo "<tr><td>'" . ($display_char === ' ' ? 'Space' : $display_char) . "'</td><td>" . number_format($percent, 2) . "%</td></tr>";
-        
+            }
             echo "</table>";
-        } else {
-            echo "Error reading the file.";
-        }
-    } else {
-        echo "Please upload a valid text file.";
-    }
-} else {
-    echo "No file uploaded.";
-}
+    
 
 // Функция для расчета энтропии
 function calculate_entropy($text) {
