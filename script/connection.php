@@ -4,7 +4,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
     $file = $_FILES['file']['tmp_name'];
 
     // Проверим, что файл существует и является текстовым
-    if (is_uploaded_file($file) && mime_content_type($file) === 'text/plain') {
         $content = file_get_contents($file);
         if ($content !== false) {
             // Расчет энтропии
@@ -22,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
             foreach ($distribution as $char => $percent) {
                 $display_char = htmlspecialchars($char); // преобразуем специальные символы для отображения
                 echo "<tr><td>'" . ($display_char === ' ' ? 'Space' : $display_char) . "'</td><td>" . number_format($percent, 2) . "%</td></tr>";
-            }
+        
             echo "</table>";
         } else {
             echo "Error reading the file.";
